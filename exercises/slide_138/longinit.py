@@ -26,7 +26,7 @@ def path_vuln_filter(path):
 
     # next, create constraints representing an unsafe condition. In this case,
     # let's check if the return address can point *outside* of the program.
-    unsafe_constraints = [ path.state.se.Or(saved_eip < project.loader.min_addr(), saved_eip > project.loader.max_addr()) ]
+    unsafe_constraints = [ path.state.se.Or(saved_eip < project.loader.min_addr, saved_eip > project.loader.max_addr) ]
 
     # check if the state is satisfiable with these conditions, and return True if it is
     return path.state.se.satisfiable(extra_constraints=unsafe_constraints)
