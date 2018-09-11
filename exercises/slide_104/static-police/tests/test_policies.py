@@ -1,4 +1,3 @@
-
 # This is a collection of test cases on policies and policy checking procedures
 
 import argparse
@@ -15,7 +14,7 @@ def test_return_values():
     Smoke test for policy ReturnValues
     """
 
-    p = angr.Project(os.path.join('..', 'test_binaries', 'return_values'), load_options={'auto_load_libs': False})
+    p = angr.Project(os.path.join('..', 'test_binaries', 'return_values'), auto_load_libs=False)
 
     cfg = p.analyses.CFGFast()
 
@@ -48,7 +47,7 @@ def test_return_value_checks():
     Smoke test for policy ReturnValueChecks
     """
 
-    p = angr.Project(os.path.join('..', 'test_binaries', 'return_value_checks'), load_options={'auto_load_libs': False})
+    p = angr.Project(os.path.join('..', 'test_binaries', 'return_value_checks'), auto_load_libs=False)
 
     cfg = p.analyses.CFGFast()
 
@@ -73,7 +72,7 @@ def main():
 
     if args.test:
         g = globals()
-        for k, v in g.iteritems():
+        for k, v in g.items():
             if k == 'test_%s' % args.test:
                 v()
                 break
@@ -83,7 +82,7 @@ def main():
     else:
 
         g = globals()
-        for k, v in g.iteritems():
+        for k, v in g.items():
             if k.startswith('test_') and hasattr(v, '__call__'):
                 v()
 

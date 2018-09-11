@@ -1,4 +1,3 @@
-
 class CheckResult(object):
     """
     Result of a policy check.

@@ -1,9 +1,8 @@
-
 import logging
 
-from simuvex import SimRegisterVariable
 import angr
 from angr import KnowledgeBase
+from angr.sim_variable import SimRegisterVariable
 from angr.analyses.code_location import CodeLocation
 from angr.analyses.ddg import ProgramVariable
 

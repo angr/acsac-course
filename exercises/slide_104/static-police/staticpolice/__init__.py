@@ -1,4 +1,3 @@
-
 from .staticpolice import StaticPolice
 from .policy_manager import PolicyManager
 # import all defined policies

@@ -49,7 +49,7 @@ class PolicyManager(object):
 
         result = True
 
-        for _, p in self.policies.iteritems():
+        for _, p in self.policies.items():
 
             if not p.check_function(function):
                 result = False
@@ -67,7 +67,7 @@ class PolicyManager(object):
 
         result = True
 
-        for _, p in self.policies.iteritems():
+        for _, p in self.policies.items():
 
             if not p.check_functions(functions):
                 result = False

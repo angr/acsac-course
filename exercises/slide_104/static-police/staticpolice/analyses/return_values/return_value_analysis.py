@@ -1,4 +1,3 @@
-
 import logging
 
 from simuvex import SimRegisterVariable, SimConstantVariable

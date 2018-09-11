@@ -1,4 +1,3 @@
-
 # This is a collection of test case on analyses implemented in Flea
 
 import argparse
@@ -15,7 +14,7 @@ def test_return_value_analysis():
     Smoke test for ReturnValueAnalysis
     """
 
-    p = angr.Project(os.path.join('..', 'test_binaries', 'return_values'), load_options={'auto_load_libs': False})
+    p = angr.Project(os.path.join('..', 'test_binaries', 'return_values'), auto_load_libs=False)
 
     cfg = p.analyses.CFGFast()
 
@@ -43,7 +42,6 @@ def test_return_value_analysis():
         nose.tools.assert_equal(rva.return_values[0].value, return_value)
 
 def test_data_dependency_analysis():
-
     pass
 
 
@@ -54,7 +52,7 @@ def main():
 
     if args.test:
         g = globals()
-        for k, v in g.iteritems():
+        for k, v in g.items():
             if k == 'test_%s' % args.test:
                 v()
                 break
@@ -64,7 +62,7 @@ def main():
     else:
 
         g = globals()
-        for k, v in g.iteritems():
+        for k, v in g.items():
             if k.startswith('test_') and hasattr(v, '__call__'):
                 v()
 

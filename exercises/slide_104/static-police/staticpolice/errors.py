@@ -1,4 +1,3 @@
-
 class StaticPoliceBaseError(Exception):
     pass
 

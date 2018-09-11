@@ -1,4 +1,3 @@
-
 class BaseReturnValue(object):
     """
     Base class for return value classes.

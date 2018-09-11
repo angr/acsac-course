@@ -25,7 +25,7 @@ if cfg_norm is not None:
     nodes_only_in_normalized = set()
 
     for n in nodes_norm:
-        if any([nn for nn in nodes if nn.addr == n.addr and nn.size == n.size]):
+        if any(nn for nn in nodes if nn.addr == n.addr and nn.size == n.size):
             continue
         nodes_only_in_normalized.add(n)
 
