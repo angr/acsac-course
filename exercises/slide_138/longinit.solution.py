@@ -1,5 +1,4 @@
 import angr
-import simuvex
 import claripy
 
 # load the binary
@@ -46,9 +45,9 @@ simgr.stashes['vuln'] = [ ]
 
 # Our binary, in this case, has a long initialization loop. We can use Unicorn Engine to
 # run this initialization loop concretely, since it does not touch symbolic data. Let's
-# add the appropriate options. When the unicorn options are added, simuvex will jump into
+# add the appropriate options. When the unicorn options are added, angr will jump into
 # unicorn as long as symbolic data is not accessed.
-simgr.active[0].options |= simuvex.options.unicorn
+simgr.active[0].options |= angr.options.unicorn
 
 # Since we have the address of main in the knowledgebase, let's make a less janky initialization procedure.
 print("Initializing initial state...")

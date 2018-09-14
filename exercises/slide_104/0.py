@@ -5,7 +5,6 @@ Define a static security that prevents the "vulnerability" being triggered.
 '''
 
 import angr
-import simuvex
 
 # load the binary
 project = angr.Project("fate")
@@ -40,7 +39,7 @@ fread_nodes = [ ]
 # WRITEME: for each `fread` node, check what the third argument is
 # to do so, a calling convention object should be initialized, so we know where all those arguments are in the state
 # this is how you can initialize a calling convention object:
-#   cc = simuvex.DefaultCC[project.arch.name](project.arch)
+#   cc = angr.DefaultCC[project.arch.name](project.arch)
 # then you can use this cc to retrieve an argument - please refer to SimCC implementation in angr to find out
 # how to do so ;)
 cc = None

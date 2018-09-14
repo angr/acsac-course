@@ -1,5 +1,4 @@
 import angr
-import simuvex
 import claripy
 
 # load the binary, but the original one this time!

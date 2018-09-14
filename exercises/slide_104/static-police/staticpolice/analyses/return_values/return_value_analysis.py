@@ -1,6 +1,6 @@
 import logging
 
-from simuvex import SimRegisterVariable, SimConstantVariable
+from angr import SimRegisterVariable, SimConstantVariable
 from angr import Analysis, register_analysis
 from angr import knowledge
 from angr.analyses.ddg import DDG, ProgramVariable

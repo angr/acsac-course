@@ -1,5 +1,4 @@
 import angr
-import simuvex
 import claripy
 
 # load the binary, but the original one this time!
@@ -13,7 +12,7 @@ cfg = project.analyses.CFG()
 # in both main() and dump_stack() is not properly handled by angr's printf SimProcedure. If you try to run this
 # code without compensating for that, it will hang (because it will error on all paths and keep looping while looking
 # for a vuln path). So, to compensate for that, we override printf with a simprocedure that does nothing.
-class DoNothing(simuvex.SimProcedure):
+class DoNothing(angr.SimProcedure):
     def run(self):
         return
 project.hook(project.kb.functions['printf'].addr, DoNothing)
