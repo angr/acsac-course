@@ -50,7 +50,7 @@ for node in fread_nodes:
         continue
     third_arg = cc.arg(node.input_state, 2)
     print("The third argument is %s" % third_arg)
-    if node.input_state.se.is_true(third_arg > 128):
+    if node.input_state.solver.is_true(third_arg > 128):
         # ouch
         print("ALERT: possible violation at %s, identifier %s." % (node, node.simrun_key))
 
