@@ -49,7 +49,7 @@ arg = claripy.BVV(b"A"*60).concat(claripy.BVS("arg", 240))
 # next, create a state with this argument
 state = project.factory.entry_state(args=['overflow3', arg])
 # now, create the simulation manager with that state as the initial state
-simgr = project.factory.simgr(state)
+simgr = project.factory.simulation_manager(state)
 
 # initiate a "vuln" stash
 simgr.stashes['vuln'] = [ ]
