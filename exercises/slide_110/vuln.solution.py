@@ -46,7 +46,7 @@ while not simgr.vuln:
     simgr.move('active', 'vuln', filter_func=path_vuln_filter)
 
 # now synthesize our crashing input
-crashing_input = simgr.vuln[0].state.posix.dumps(0)
+crashing_input = simgr.vuln[0].posix.dumps(0)
 open("crashing_input", "wb").write(crashing_input)
 print("You can crash the program by doing:")
 print("# cat crashing_input | ./overflow")

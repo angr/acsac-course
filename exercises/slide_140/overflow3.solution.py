@@ -15,8 +15,8 @@ cfg = project.analyses.CFG()
 class DoNothing(angr.SimProcedure):
     def run(self):
         return
-project.hook(project.kb.functions['printf'].addr, DoNothing)
-project.hook(project.kb.functions['dump_stack'].addr, DoNothing)
+project.hook(project.kb.functions['printf'].addr, DoNothing())
+project.hook(project.kb.functions['dump_stack'].addr, DoNothing())
 
 # Make a simple security checker that checks for an overflow into the return address. There are several cases:
 #
@@ -82,6 +82,6 @@ simgr.explore(stash='vuln', find=addr_of_shell)
 
 # now synthesize our pwning input!
 pwning_input = simgr.found[0].solver.eval(arg, cast_to=bytes)
-open("pwning_input", "w").write(pwning_input.split('\0')[0]) # since it's a string arg, we only care up to the first null byte
+open("pwning_input", "wb").write(pwning_input.split(b'\0')[0]) # since it's a string arg, we only care up to the first null byte
 print("You can crash the program by doing:")
 print('# ./overflow3-28d8a442fb232c0c "$(cat pwning_input)"')
