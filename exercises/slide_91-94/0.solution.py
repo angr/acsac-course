@@ -17,17 +17,17 @@ cfg_fast = p.analyses.CFG()
 main_func = p.kb.functions.function(name='main')
 auth_func = p.kb.functions.function(name='authenticate')
 
-# Note: we create a new knowledge base to use with CFGAccurate and DDG analysis
+# Note: we create a new knowledge base to use with CFGEmulated and DDG analysis
 # we don't want to mess with the default (project-level) knowledge base
 # this is just a good habit :-)
-kb = angr.knowledge_base.KnowledgeBase(p, p.loader.main_bin)
+kb = angr.knowledge_base.KnowledgeBase(p, p.loader.main_object)
 
 # WRITEME: generate an accurate CFG
 # Recommended parameters:
 # starts=(main_func,addr,)
 # context_sensitivity_level=2
 # keep_state=True  # states must be kept and stored to allow dependence analysis later
-cfg = p.analyses.CFGAccurate(starts=(main_func.addr,),
+cfg = p.analyses.CFGEmulated(starts=(main_func.addr,),
                              context_sensitivity_level=2,
                              keep_state=True
                              )

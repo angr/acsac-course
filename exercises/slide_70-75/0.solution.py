@@ -11,7 +11,7 @@ project = angr.Project("fauxware")
 
 # WRITEME: generate an accurate CFG
 # since we want to see its program states generated during CFG recovery, we should specify 'keep_state=True'
-cfg = project.analyses.CFGAccurate(keep_state=True)
+cfg = project.analyses.CFGEmulated(keep_state=True)
 
 # Alright, we got it!
 if cfg is not None:

@@ -28,7 +28,7 @@ cfg_fast = project.analyses.CFG()
 # - context_sensitivity_level
 # - keep_state
 # You might want to use a separate knowledge base
-cfg = project.analyses.CFGAccurate(context_sensitivity_level=3, keep_state=True)
+cfg = project.analyses.CFGEmulated(context_sensitivity_level=3, keep_state=True)
 
 # WRITEME: find the fread function
 fread_func = project.kb.functions.function(name='fread', plt=False)
