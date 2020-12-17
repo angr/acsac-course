@@ -55,7 +55,7 @@ if regions is not None:
 
     # WRITEME: Derive stack layout information from abstract locations
     # you may did a little bit into the source code SimuVEX and claripy to see what members an aloc has.
-    # related code are abstract_memory.py in SimuVEX and the vsa subpackage in claripy.
+    # related code are angr/storage/memory_mixins/regioned_memory and the vsa subpackage in claripy.
     # by default, region.alocs is a dict mapping (block address, statement ID) to a list of memory targets.
     # what we want is a list of stack offset and size of the corresponding memory access
     # let's do it here
